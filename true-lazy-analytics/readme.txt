@@ -4,7 +4,7 @@ Tags: Pagespeed, Lazy Load, Яндекс, Google Analytics, Perfomance
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 5.6.20
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ Enable option "Compatibility with LiteSpeed Cache plugin" on Setting page.
 3. Plugin Setting
 
 == Changelog ==
+= 2.4.9 =
+* Added: Compatibility with WordPress 6.7
+
 = 2.4.8 =
 * Added Microsoft Clarity
 * Updated Description
