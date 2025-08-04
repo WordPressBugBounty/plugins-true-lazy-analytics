@@ -2,9 +2,9 @@
 Contributors: seojacky, mihdan
 Tags: Pagespeed, Lazy Load, Яндекс, Google Analytics, Perfomance
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.8
 Requires PHP: 5.6.20
-Stable tag: 2.4.9
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,7 @@ This plugin enables lazy loading for Google Analytics, Microsoft Clarity, Facebo
 
 == Description ==
 This plugin enables lazy loading for Google Analytics, Facebook Pixel, Hotjar, Yandex Metrica (Yandex Metrika) and Liveinternet counter. Does not degrade PageSpeed scores. The installation of the counter of Yandex Metrica and Google Analytics on the website without editing the files of the selected theme. All you need is turn necessary toggle on and you are in business 😎Microsoft
+
 ### 📈 Supports popular analytics systems ###
 - **Google Analytics** (web analytics service offered by Google that tracks and reports website traffic).
 - **Microsoft Clarity** - is a free, user-friendly behavioral analytics tool.
@@ -19,6 +20,9 @@ This plugin enables lazy loading for Google Analytics, Facebook Pixel, Hotjar, Y
 - **Hotjar** - is a suite of analytics tools that will help you gather qualitative data.
 - **Yandex Metrica** — analytics system of Russian search engine Yandex. You can track events and create and analyse conversion targets.
 - **Liveinternet** (free statistics service in Runet).
+- **SberAds** (платформа для размещения рекламы в интернете).
+- **VkAds** (платформа для рекламы на проектах VK).
+
 #### ⏳ Coming soon ####
 - **Facebook Pixel Events**
 

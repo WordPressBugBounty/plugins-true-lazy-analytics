@@ -317,8 +317,23 @@ function tlap_plugin_settings(){
 		'tlap_fill_hotjar_id',
 		'tlap_page_2', // Page
 		'setting_section_id' // ID
-
 	);
+
+    add_settings_field(
+        'sber_ads_id',
+        esc_html__('SberAds', 'true-lazy-analytics'),
+        'tlap_fill_sber_ads_id',
+        'tlap_page_2', // Page
+        'setting_section_id' // ID
+    );
+
+    add_settings_field(
+        'vk_ads_id',
+        esc_html__('VkAds', 'true-lazy-analytics'),
+        'tlap_fill_vk_ads_id',
+        'tlap_page_2', // Page
+        'setting_section_id' // ID
+    );
 
 	add_settings_field(
 		'liru_en',
@@ -507,6 +522,24 @@ function tlap_fill_hotjar_id(){
 
 }
 
+function tlap_fill_sber_ads_id(){
+    $val = get_option('tlap_add_analytics_option_counters') ? get_option('tlap_add_analytics_option_counters') : null;
+    $val = isset($val['tlap_sber_ads_id']) ? $val['tlap_sber_ads_id'] : null;
+    ?>
+    <input size="20" type="text" name="tlap_add_analytics_option_counters[tlap_sber_ads_id]" value="<?php echo esc_attr( $val ) ?>" placeholder="XXXXXXX"  />
+    <?php
+
+}
+
+function tlap_fill_vk_ads_id(){
+    $val = get_option('tlap_add_analytics_option_counters') ? get_option('tlap_add_analytics_option_counters') : null;
+    $val = isset($val['tlap_vk_ads_id']) ? $val['tlap_vk_ads_id'] : null;
+    ?>
+    <input size="20" type="text" name="tlap_add_analytics_option_counters[tlap_vk_ads_id]" value="<?php echo esc_attr( $val ) ?>" placeholder="XXXXXXX"  />
+    <?php
+
+}
+
 # fill option liru enable
 
 function tlap_fill_liru_enable(){
@@ -640,6 +673,14 @@ function tlap_sanitize_callback( $options ){
 		if( $name == 'tlap_hotjar_id' )
 		$val = htmlspecialchars($val, ENT_QUOTES);
 
+        if( $name === 'tlap_sber_ads_id' ) {
+            $val = htmlspecialchars($val, ENT_QUOTES);
+        }
+
+        if( $name === 'tlap_vk_ads_id' ) {
+            $val = htmlspecialchars($val, ENT_QUOTES);
+        }
+
 		if( $name == 'checkbox_liru' )
 		$val = intval($val);
 
@@ -680,6 +721,8 @@ function tlap_plugin_default_values(){
 			'tlap_clarity_id' => '',
 			'tlap_fbpixel_id' => '',
 			'tlap_hotjar_id' => '',
+			'tlap_sber_ads_id' => '',
+			'tlap_vk_ads_id' => '',
 			'checkbox_liru' => '',
 
 		),

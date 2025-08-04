@@ -2,8 +2,8 @@
 /*
  * Plugin name: True Lazy Analytics
  * Description: Lazy loading plugin for Google Analytics, Facebook Pixel, Hotjar, Yandex Metrica, Liveinternet
- * Version: 2.4.9
- * Author: seojacky 
+ * Version: 2.5.0
+ * Author: seojacky
  * Author URI: https://t.me/big_jacky
  * Plugin URI: https://wordpress.org/plugins/true-lazy-analytics/
  * GitHub Plugin URI: https://github.com/seojacky/true-lazy-analytics
@@ -11,8 +11,11 @@
  * Domain Path: /languages
 */
 /* Exit if accessed directly */
-if ( ! defined( 'ABSPATH' ) ) {	return;}
-define('TLAP_VERSION', '2.4.9');
+if ( ! defined( 'ABSPATH' ) ) {
+    die;
+}
+
+define('TLAP_VERSION', '2.5.0');
 define('TLAP_FILE', __FILE__); // url of the file directory
 define('TLAP_DIR', __DIR__); // url plugins folder /var/www/...
 define('TLAP_FOLDER', trailingslashit( plugin_dir_url(__FILE__) ) ); // url plugins folder http://.../wp-content/plugins/true-lazy-analytics

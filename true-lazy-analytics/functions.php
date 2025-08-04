@@ -20,7 +20,7 @@ function tlap_add_analytics_plugin(){
 
 function tlap_output () {
 
-	if (empty(tlap_add_google_analytics()) && empty(tlap_add_fbpixel()) && empty(tlap_add_hotjar()) && empty(tlap_add_yametrika())  && empty(tlap_add_liru_counter())) return '<!--True Lazy Analytics (null counters) -->';
+	if (empty(tlap_add_google_analytics()) && empty(tlap_add_fbpixel()) && empty(tlap_add_hotjar()) && empty( tlap_add_sber_ads() ) && empty( tlap_add_vk_ads() ) && empty(tlap_add_yametrika())  && empty(tlap_add_liru_counter())) return '<!--True Lazy Analytics (null counters) -->';
 
 	$all_options = get_option( 'tlap_add_analytics_option_main' );
 
@@ -71,6 +71,8 @@ if ( navigator.userAgent.indexOf( 'YandexMetrika' ) > -1 ) {
 			$output .= tlap_add_clarity();
 			$output .= tlap_add_fbpixel();
 			$output .= tlap_add_hotjar();
+			$output .= tlap_add_sber_ads();
+			$output .= tlap_add_vk_ads();
 			$output .= tlap_add_liru_counter();
 			$output .= tlap_add_yametrika();
 						$output .= "},
@@ -215,7 +217,66 @@ console.log("hotjar start");';
 
 }
 
+function tlap_add_sber_ads() {
+    $all_options = get_option( 'tlap_add_analytics_option_counters' );
+    $sber_ads_id = ! empty( $all_options['tlap_sber_ads_id'] ) ? $all_options['tlap_sber_ads_id']  : ''; // default: empty string;
 
+    if ( empty( $sber_ads_id ) ) {
+        return '';
+    }
+    ob_start();
+    ?>
+    <!-- SberAds Counter -->
+    (function (w, d, c) {
+        (w[c] = w[c] || []).push(function() {
+            var options = {
+                project: <?php echo esc_attr( $sber_ads_id ); ?>,
+            };
+            try {
+                w.top100Counter = new top100(options);
+            } catch(e) { }
+        });
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src =
+            (d.location.protocol == "https:" ? "https:" : "http:") +
+            "//st.top100.ru/top100/top100.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(window, document, "_top100q");
+    <!-- END SberAds Counter -->
+    <?php
+    return ob_get_clean();
+}
+
+function tlap_add_vk_ads() {
+    $all_options = get_option( 'tlap_add_analytics_option_counters' );
+    $vk_ads_id = ! empty( $all_options['tlap_vk_ads_id'] ) ? $all_options['tlap_vk_ads_id']  : ''; // default: empty string;
+
+    if ( empty( $vk_ads_id ) ) {
+        return '';
+    }
+    ob_start();
+    ?>
+    <!-- VkAds counter -->
+    var _tmr = window._tmr || (window._tmr = []);
+    _tmr.push({id: "<?php echo esc_attr( $vk_ads_id ); ?>", type: "pageView", start: (new Date()).getTime()});
+    (function (d, w, id) {
+        if (d.getElementById(id)) return;
+        var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+        ts.src = "https://top-fwz1.mail.ru/js/code.js";
+        var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+        if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+    })(document, window, "tmr-code");
+    <!-- END VkAds counter -->
+    <?php
+    return ob_get_clean();
+}
 
 //Metrica
 function tlap_add_yametrika() {
